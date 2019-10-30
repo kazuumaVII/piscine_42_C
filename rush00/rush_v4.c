@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rush_v2.c                                          :+:      :+:    :+:   */
+/*   rush_v4.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frfrance <frfrance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/30 14:45:27 by frfrance          #+#    #+#             */
-/*   Updated: 2019/10/30 16:53:13 by frfrance         ###   ########.fr       */
+/*   Created: 2019/10/30 16:56:17 by frfrance          #+#    #+#             */
+/*   Updated: 2019/10/30 16:58:32 by frfrance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void	ft_putchar(char c)
 void	ft_haut(int x, int b)
 {
 	if (b > 1 && b < x)
-		ft_putchar('*');
+		ft_putchar('B');
 	else if (b == x && x != 1)
-		ft_putchar('\\');
+		ft_putchar('C');
 	else
-		ft_putchar('/');
+		ft_putchar('A');
 }
 
 void	middle(int x, int b)
@@ -32,20 +32,20 @@ void	middle(int x, int b)
 	if (b > 1 && b < x)
 		ft_putchar(' ');
 	else
-		ft_putchar('*');
+		ft_putchar('B');
 }
 
 void	bas(int x, int b)
 {
 	if (b > 1 && b < x)
-		ft_putchar('*');
+		ft_putchar('B');
 	else if (b == x && x != 1)
-		ft_putchar('/');
+		ft_putchar('C');
 	else
-		ft_putchar('\\');
+		ft_putchar('A');
 }
 
-void	rush_v2(int x, int y)
+void	rush_v4(int x, int y)
 {
 	int	a;
 	int	b;
@@ -79,6 +79,6 @@ void	rush_v2(int x, int y)
 
 int	main(int ac, char **av)
 {
-	rush_v2(atoi(av[1]), atoi(av[2]));
+	rush_v4(atoi(av[1]), atoi(av[2]));
 	return (0);
 }
