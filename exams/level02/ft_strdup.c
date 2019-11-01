@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: frfrance <frfrance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/30 13:23:15 by frfrance          #+#    #+#             */
-/*   Updated: 2019/10/31 12:20:56 by frfrance         ###   ########.fr       */
+/*   Created: 2019/10/31 12:12:16 by frfrance          #+#    #+#             */
+/*   Updated: 2019/10/31 12:26:15 by frfrance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		ft_strlen(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -22,20 +22,32 @@ int		ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_strdup(char *src)
+char    *ft_strdup(char *src)
 {
-	char	*dest;
-	int		i;
+	int	i;
+	char *tab;
 
 	i = 0;
-	if (!(dest = malloc(sizeof(char) * ft_strlen(src))))
+	if (!(tab = malloc(sizeof(char) * ft_strlen(src))))
 		return (0);
 	while (src[i])
 	{
-		dest[i] = src[i];
+		tab[i] = src[i];
 		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	tab[i] = '\0';
+	return (tab);
+
 }
 
+int	main(int ac, char **av)
+{
+	int	i;
+	char *tab;
+
+	i = 0;
+	tab = ft_strdup(av[1]);
+	while (tab[i])
+		printf("%c\n", tab[i++]);
+	return (0);
+}

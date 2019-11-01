@@ -1,41 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   do_op.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frfrance <frfrance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/30 13:23:15 by frfrance          #+#    #+#             */
-/*   Updated: 2019/10/31 12:20:56 by frfrance         ###   ########.fr       */
+/*   Created: 2019/10/31 12:56:06 by frfrance          #+#    #+#             */
+/*   Updated: 2019/10/31 13:09:44 by frfrance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <stdlib.h>
 
-int		ft_strlen(char *str)
+int		main(int ac, char **av)
 {
-	int i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strdup(char *src)
-{
-	char	*dest;
-	int		i;
-
-	i = 0;
-	if (!(dest = malloc(sizeof(char) * ft_strlen(src))))
-		return (0);
-	while (src[i])
+	if (ac == 4)
 	{
-		dest[i] = src[i];
-		i++;
+		if (av[2][0] == '+')
+			printf("%d", atoi(av[1]) + atoi(av[3]));
+		if (av[2][0] == '-')
+			printf("%d", atoi(av[1]) - atoi(av[3]));
+		if (av[2][0] == '*')
+			printf("%d", atoi(av[1]) * atoi(av[3]));
+		if (av[2][0] == '/')
+			printf("%d", atoi(av[1]) / atoi(av[3]));
+		if (av[2][0] == '%')
+			printf("%d", atoi(av[1]) % atoi(av[3]));
 	}
-	dest[i] = '\0';
-	return (dest);
+	printf("\n");
+	return (0);
 }
-

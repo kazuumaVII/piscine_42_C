@@ -1,41 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   wdmatch.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frfrance <frfrance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/30 13:23:15 by frfrance          #+#    #+#             */
-/*   Updated: 2019/10/31 12:20:56 by frfrance         ###   ########.fr       */
+/*   Created: 2019/10/31 12:46:40 by frfrance          #+#    #+#             */
+/*   Updated: 2019/10/31 12:47:14 by frfrance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+#include <unistd.h>
 #include <stdlib.h>
 
-int		ft_strlen(char *str)
+void	ft_putchar(char c)
 {
-	int i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	write (1, &c, 1);
 }
 
-char	*ft_strdup(char *src)
+void	ft_putstr(char const *str)
 {
-	char	*dest;
 	int		i;
 
 	i = 0;
-	if (!(dest = malloc(sizeof(char) * ft_strlen(src))))
-		return (0);
-	while (src[i])
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
+	while (str[i])
+		write(1, &str[i++], 1);
 }
 
+int		main(int argc, char const *argv[])
+{
+	int		i;
+	int		j;
+
+	if (argc == 3)
+	{
+		i = 0;
+		j = 0;
+		while (argv[2][j])
+			if (argv[2][j++] == argv[1][i])
+				i += 1;
+		if (!argv[1][i])
+			ft_putstr(argv[1]);
+	}
+	write(1, "\n", 1);
+	return (0);
+}

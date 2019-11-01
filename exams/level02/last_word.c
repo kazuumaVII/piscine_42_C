@@ -1,41 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   last_word.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frfrance <frfrance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/30 13:23:15 by frfrance          #+#    #+#             */
-/*   Updated: 2019/10/31 12:20:56 by frfrance         ###   ########.fr       */
+/*   Created: 2019/10/31 12:34:22 by frfrance          #+#    #+#             */
+/*   Updated: 2019/10/31 12:38:02 by frfrance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <unistd.h>
 
-int		ft_strlen(char *str)
+void	ft_putchar(char c)
 {
-	int i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	write(1, &c, 1);
 }
 
-char	*ft_strdup(char *src)
+void	ft_last_word(char *str)
 {
-	char	*dest;
 	int		i;
+	int		j;
 
 	i = 0;
-	if (!(dest = malloc(sizeof(char) * ft_strlen(src))))
-		return (0);
-	while (src[i])
+	j = 0;
+	while (str[i] != '\0')
 	{
-		dest[i] = src[i];
+		if (str[i] == ' ' && str[i + 1] >= 33 && str[i + 1] <= 127)
+			j = i + 1;
 		i++;
+
 	}
-	dest[i] = '\0';
-	return (dest);
+	while (str[j] >= 33 && str[j] <= 127)
+	{
+		ft_putchar(str[j]);
+		j++;
+	}
 }
 
+int		main(int argc, char **argv)
+{
+	if (argc != 2)
+	{
+		ft_putchar('\n');
+		return (0);
+	}
+	ft_last_word(argv[1]);
+	ft_putchar('\n');
+	return (0);
+}

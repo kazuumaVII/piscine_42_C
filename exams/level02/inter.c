@@ -1,41 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   inter.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frfrance <frfrance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/30 13:23:15 by frfrance          #+#    #+#             */
-/*   Updated: 2019/10/31 12:20:56 by frfrance         ###   ########.fr       */
+/*   Created: 2019/10/31 12:26:51 by frfrance          #+#    #+#             */
+/*   Updated: 2019/10/31 12:31:32 by frfrance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <unistd.h>
 
-int		ft_strlen(char *str)
+int		checkchar(char *str, char c, int len)
 {
-	int i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strdup(char *src)
-{
-	char	*dest;
 	int		i;
 
 	i = 0;
-	if (!(dest = malloc(sizeof(char) * ft_strlen(src))))
-		return (0);
-	while (src[i])
+	while (str[i] && (i < len || len == -1))
 	{
-		dest[i] = src[i];
+		if (str[i] == c)
+			return (1);
 		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	return (0);
 }
 
+int		main(int ac, char **av)
+{
+	int		i;
+
+	i = 0;
+	if (ac == 3)
+	{
+		while (av[1][i])
+		{
+			if (!checkchar(av[1], av[1][i], i) && checkchar(av[2], av[1][i], -1))
+				write(1, av[1] + i, 1);
+			i++;
+		}
+	}
+	write(1, "\n", 1);
+	return (0);
+}
