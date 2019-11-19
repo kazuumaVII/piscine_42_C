@@ -1,4 +1,4 @@
-# piscine_42_C
+#titre 42 Paris
 
 {C00 -> 82%}
 {C01 -> 100%}
