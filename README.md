@@ -1,4 +1,4 @@
-#titre 42 Paris
+42 Paris#titre
 
 {C00 -> 82%}
 {C01 -> 100%}
